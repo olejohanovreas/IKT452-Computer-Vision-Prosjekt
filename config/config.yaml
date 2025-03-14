@@ -1,0 +1,24 @@
+data:
+  raw:
+    - "data/raw/training"
+    - "data/raw/testing"
+  processed:
+    - "data/processed/training"
+    - "data/processed/testing"
+
+classes:
+  - "glioma"
+  - "meningioma"
+  - "notumor"
+
+preprocessing:
+  resize_size: [ 224, 224 ]
+  threshold: 50
+
+augmentation:
+  enabled: false
+  rotation_range: 10      # Degrees (+/-)
+  shift_range: 0.05       # Fraction of width/height
+  flip_horizontal: true
+  flip_vertical: false
+  noise_stddev: 0.01      # Standard deviation for Gaussian noise (in normalized [0,1] space)
