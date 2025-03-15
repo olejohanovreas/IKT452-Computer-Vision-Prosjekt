@@ -2,9 +2,4 @@
 .idea
 __pycache__
 *.pkl
-data/processed/testing/glioma/*.jpg
-data/processed/testing/meningioma/*.jpg
-data/processed/testing/notumor/*.jpg
-data/processed/training/glioma/*.jpg
-data/processed/training/meningioma/*.jpg
-data/processed/training/notumor/*.jpg
+data/processed
