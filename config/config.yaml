@@ -16,9 +16,37 @@ preprocessing:
   threshold: 50
 
 augmentation:
-  enabled: false
-  rotation_range: 10      # Degrees (+/-)
-  shift_range: 0.05       # Fraction of width/height
-  flip_horizontal: true
-  flip_vertical: false
-  noise_stddev: 0.01      # Standard deviation for Gaussian noise (in normalized [0,1] space)
+  augment: false
+  rotation_range: 10      # Degrees (+/-) (e.g. 10)
+  shift_range: 0.1       # Fraction of width/height (e.g. 0.1)
+  flip_h: true
+  flip_v: false
+  noise_stddev: 0.01      # Standard deviation for Gaussian noise (in normalized [0,1] space, e.g. 0.01)
+
+feature_extraction:
+  method: "glcm"  # Options: "hog", "lbp", "gabor", "glcm", "sift"
+  hog:
+    orientations: 9
+    pixels_per_cell: [ 8, 8 ]
+    cells_per_block: [ 2, 2 ]
+    block_norm: "L2-Hys"
+  lbp:
+    radius: 2
+    n_points: 16
+    method: "uniform"
+    bins: 18
+  gabor:
+    frequencies: [ 0.1, 0.2 ]
+    angles: [ 0, 45, 90, 135 ]
+    kernel_size: [ 31, 31 ]
+    sigma: 4
+    lambd: 1
+    gamma: 0.5
+    psi: 0
+  glcm:
+    levels: 256
+    distances: [ 1 ]
+    angles: [ 0, 0.7854, 1.5708, 2.3562 ]
+    properties: [ "contrast", "dissimilarity", "homogeneity", "energy", "correlation", "ASM" ]
+  sift:
+    vocab_size: 50

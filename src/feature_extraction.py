@@ -1,5 +1,4 @@
 import os
-
 import cv2
 import numpy as np
 from skimage.feature import hog, local_binary_pattern, graycomatrix, graycoprops
@@ -90,6 +89,7 @@ def extract_glcm_features(image, glcm_config):
         feats.append(feat.mean())
     return np.array(feats)
 
+
 class SIFTBoW:
     def __init__(self, vocab_size):
         self.vocab_size = vocab_size
@@ -122,9 +122,12 @@ class SIFTBoW:
         hist, _ = np.histogram(clusters, bins=np.arange(0, self.vocab_size + 1), density=True)
         return hist
 
-def extract_features(path, method, config):
+
+def extract_features(path, method, config, progress_bar):
     """
     Extract features from all images in a directory using the specified method
+    :param progress_bar_extract:
+    :param progress_bar_load:
     :param path:
     :param method:
     :param config:
@@ -140,11 +143,13 @@ def extract_features(path, method, config):
             image = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
             images.append(image)
             image_paths.append(filepath)
+            progress_bar.update(1)
 
         sift_bow.build_vocabulary(images)
         for image in images:
             feat = sift_bow.transform(image)
             features_list.append(feat)
+            progress_bar.update(1)
 
     else:
         for file in os.listdir(path):
@@ -161,34 +166,7 @@ def extract_features(path, method, config):
                 feat = extract_glcm_features(image, config['glcm'])
             features_list.append(feat)
             image_paths.append(filepath)
+            progress_bar.update(1)
 
     features_matrix = np.array(features_list)
     return features_matrix, image_paths
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,15 +2,6 @@ import cv2
 import numpy as np
 
 
-def load_image(image_path):
-    """
-    Loads an image and converts it to grayscale.
-    :param image_path:
-    """
-    image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
-    return image
-
-
 def crop_image(image, threshold):
     """
     Crops the image using a threshold.
@@ -42,24 +33,14 @@ def resize_image(image, size):
     return resized
 
 
-def normalize_image(image):
-    """
-    Normalizes the image to [0,1] range.
-    :param image:
-    """
-    normalized = image.astype(np.float32) / 255.0
-    return normalized
-
-
-def preprocess_image(image_path, size, threshold):
+def preprocess_image(image, size, threshold):
     """
     Preprocesses the given image.
-    :param image_path:
+    :param image:
     :param size:
     :param threshold:
     """
-    image = load_image(image_path)
-    image = crop_image(image, threshold)
-    image = resize_image(image, size)
-    image = normalize_image(image)
-    return image
+    processed = image.copy()
+    processed = crop_image(processed, threshold)
+    processed = resize_image(processed, size)
+    return processed
