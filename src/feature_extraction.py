@@ -126,8 +126,7 @@ class SIFTBoW:
 def extract_features(path, method, config, progress_bar):
     """
     Extract features from all images in a directory using the specified method
-    :param progress_bar_extract:
-    :param progress_bar_load:
+    :param progress_bar:
     :param path:
     :param method:
     :param config:

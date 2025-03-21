@@ -17,14 +17,14 @@ preprocessing:
 
 augmentation:
   augment: false
-  rotation_range: 10      # Degrees (+/-) (e.g. 10)
-  shift_range: 0.1       # Fraction of width/height (e.g. 0.1)
+  rotation_range: 10 # Degrees (+/-) (e.g. 10)
+  shift_range: 0.1 # Fraction of width/height (e.g. 0.1)
   flip_h: true
   flip_v: false
-  noise_stddev: 0.01      # Standard deviation for Gaussian noise (in normalized [0,1] space, e.g. 0.01)
+  noise_stddev: 0.01 # Standard deviation for Gaussian noise (in normalized [0,1] space, e.g. 0.01)
 
 feature_extraction:
-  method: "glcm"  # Options: "hog", "lbp", "gabor", "glcm", "sift"
+  methods: ["hog", "lbp", "gabor", "glcm", "sift"]
   hog:
     orientations: 9
     pixels_per_cell: [ 8, 8 ]
@@ -46,7 +46,39 @@ feature_extraction:
   glcm:
     levels: 256
     distances: [ 1 ]
-    angles: [ 0, 0.7854, 1.5708, 2.3562 ]
+    angles: [ 0, 0.7854, 1.5708, 2.3562 ] # 0, pi/4, pi/2, 3pi/4
     properties: [ "contrast", "dissimilarity", "homogeneity", "energy", "correlation", "ASM" ]
   sift:
-    vocab_size: 50
+    vocab_size: 30
+
+dimensionality_reduction:
+  n_components: 3 # 2 for 2D or 3 for 3D
+
+cross_validation:
+  n_splits: 5
+  random_state: 42
+  scoring: "accuracy"
+
+model_training:
+  SVM:
+    param_grid:
+      C: [0.1, 1, 10]
+      kernel: ["linear", "rbf"]
+      gamma: ["scale", "auto"]
+  LogisticRegression:
+    param_grid:
+      C: [0.1, 1, 10]
+      solver: ["liblinear", "lbfgs"]
+  kNN:
+    param_grid:
+      n_neighbors: [3, 5, 7]
+      weights: ["uniform", "distance"]
+  RandomForest:
+    param_grid:
+      n_estimators: [50, 100]
+      max_depth: [null, 5, 10]
+  GradientBoosting:
+    param_grid:
+      n_estimators: [50, 100]
+      learning_rate: [0.01, 0.1]
+      max_depth: [3, 5]
