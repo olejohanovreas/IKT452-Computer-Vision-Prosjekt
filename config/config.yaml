@@ -60,15 +60,15 @@ cross_validation:
   scoring: "accuracy"
 
 model_training:
+  LogisticRegression:
+    param_grid:
+      C: [0.1, 1, 10]
+      solver: ["liblinear", "lbfgs"]
   SVM:
     param_grid:
       C: [0.1, 1, 10]
       kernel: ["linear", "rbf"]
       gamma: ["scale", "auto"]
-  LogisticRegression:
-    param_grid:
-      C: [0.1, 1, 10]
-      solver: ["liblinear", "lbfgs"]
   kNN:
     param_grid:
       n_neighbors: [3, 5, 7]
