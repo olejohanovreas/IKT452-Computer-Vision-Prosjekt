@@ -31,7 +31,7 @@ Welcome to my repository!
    ```
 
 2. **Set Up the Environment**  
-   - Create and activate a virtual environment (optional but recommended):  
+   - Create and activate a virtual environment:  
      ```bash
      python -m venv venv
      source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -42,7 +42,7 @@ Welcome to my repository!
      ```
 
 3. **Configure the Pipeline**  
-   - Update parameters in `config/config.yaml` (e.g., data paths, augmentation settings, PCA components, classifier options).
+   - Update parameters in `config/config.yaml` if applicable.
 
 4. **Run the Pipeline**  
    - Open `pipeline.ipynb` in Jupyter:  
@@ -55,6 +55,3 @@ Welcome to my repository!
      - Feature Extraction (HOG, LBP, Gabor, etc.)
      - Dimensionality Reduction (PCA)
      - Model Training & Evaluation
-
-5. **View Results**  
-   - Check the `results/` folder for trained models (`.joblib` files) and output figures/logs.
