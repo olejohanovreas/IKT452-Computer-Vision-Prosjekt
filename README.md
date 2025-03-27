@@ -49,9 +49,4 @@ Welcome to my repository!
      ```bash
      jupyter notebook pipeline.ipynb
      ```
-   - Follow the notebook cells to execute each stage:
-     - Preprocessing (cropping, resizing)
-     - Augmentation (optional)
-     - Feature Extraction (HOG, LBP, Gabor, etc.)
-     - Dimensionality Reduction (PCA)
-     - Model Training & Evaluation
+   - Follow the notebook cells to execute each stage and observer the results.
