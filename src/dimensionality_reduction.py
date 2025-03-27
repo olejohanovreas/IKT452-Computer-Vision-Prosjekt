@@ -81,9 +81,18 @@ def visualize_dr(features_reduced, labels, n_components, method):
 
         fig.update_layout(
             scene=dict(
-                xaxis_title='PCA Component 1',
-                yaxis_title='PCA Component 2',
-                zaxis_title='PCA Component 3',
+                xaxis_title='PCA 1',
+                yaxis_title='PCA 2',
+                zaxis_title='PCA 3',
+            ),
+            font=dict(
+                size=14
+            ),
+            legend=dict(
+                yanchor='top',
+                y=0.99,
+                xanchor='left',
+                x=0.01
             )
         )
 
