@@ -26,7 +26,7 @@ Welcome to my repository!
 
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/your-username/IKT452-Computer-Vision-Prosjekt.git
+   git clone https://github.com/olejohanovreas/IKT452-Computer-Vision-Prosjekt.git
    cd IKT452-Computer-Vision-Prosjekt
    ```
 
