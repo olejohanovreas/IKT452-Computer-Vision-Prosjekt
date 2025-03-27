@@ -49,4 +49,4 @@ Welcome to my repository!
      ```bash
      jupyter notebook pipeline.ipynb
      ```
-   - Follow the notebook cells to execute each stage and observer the results.
+   - Follow the notebook cells to execute each stage and observe the results.
